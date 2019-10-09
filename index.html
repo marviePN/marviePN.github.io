@@ -1,0 +1,290 @@
+<html>
+
+<head>
+    <title>FAN SWITCH</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <header id="top">
+        <div id="header">
+            <div class="img-wrap">
+                <img src="myProfile.png" alt="Profile Picture">
+            </div>
+            <div id="name">
+                <p><b>Marvie D. Cauyan</b></p>
+            </div>
+            <div id="topnav">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <div>
+                <h1> IOT Fan Switch </h1>
+
+                <h4 id="status">The device is currently turned off</h4>
+                <button id="one" class="btn btn-success">1</button>
+                <button id="two" class="btn btn-success">2</button>
+                <button id="three" class="btn btn-success">3</button>
+                <button id="off" class="btn btn-danger">OFF</button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+    <br><br><br><br>
+    <footer>
+        <div>
+            <a href="#top">Back to top</a>
+            <h3>Stay Connected</h3>
+            <a href="https://twitter.com/Twitter?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+                <img src="https://www.gft.eng.cam.ac.uk/gft-on-twitter/image">
+            </a>
+            <a href="https://www.facebook.com">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2000px-Facebook_icon_2013.svg.png">
+            </a>
+            <a href="https://myaccount.google.com/">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKAGP4dUPjVwWXtDIb_R3NcEWAz07BwweeBXa1OU1NL7kLsfgY">
+            </a>
+        </div>
+        <div class="footer-left">
+            <p>About Me </p>
+            <p>Contact Me: 09101167718 or (02) 8821 1189</p>
+            <p>Visit her favorite websites:<br>
+                <a href="https://www.whoneedsmaps.com/about/" class="footer-left">@https://www.whoneedsmaps.com/about/</a><br>
+                <a href="https://aminearlythereyet.com/" class="footer-left">@https://aminearlythereyet.com/</a><br>
+                <a href="https://www.bemytravelmuse.com/ and many more" class="footer-left">@https://www.bemytravelmuse.com/</a><br>
+            </p>
+            <p>MarvieCauyan.copy2019.All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+
+<script src="scripts/browserMqtt.js"></script>
+<script src="scripts/index.js"></script>
+
+
+
+
+
+<script>
+    var connect = "wss://test.mosquitto.org:8081/mqtt";
+    client = mqtt.connect(connect);
+
+    $(document).ready(function () {
+        $("#one").click(function (e) {
+            e.preventDefault();
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            var topic = 'marvie/fan/status';
+            var payload = 'Turned On at 1: ' + time
+            client.publish(topic, payload);
+            $("#status").html("The fan is currently turned at 1");
+        })
+        $("#two").click(function (e) {
+            e.preventDefault();
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            var topic = 'marvie/fan/status';
+            var payload = 'Turned On at 2: ' + time
+            client.publish(topic, payload);
+            $("#status").html("The fan is currently turned at 2");
+        })
+        $("#three").click(function (e) {
+            e.preventDefault();
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            var topic = 'marvie/fan/status';
+            var payload = 'Turned On at 3: ' + time
+            client.publish(topic, payload);
+            $("#status").html("The fan is currently turned at 3");
+        })
+        $("#off").click(function (e) {
+            e.preventDefault();
+            var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+            var topic = 'marvie/fan/status';
+            var payload = 'Turned Off: ' + time
+            client.publish(topic, payload);
+            $("#status").html("The fan is currently turned off");
+        })
+    })
+</script>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>MQTT</title>
+
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNjJRSGZVgDSFF0KyW6lDBH6Ebd0uHFkwxz6bNF1erWlQqQ4ZF"
+            type="image/x-icon">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+        <script src="scripts/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            button {
+                width: 120px;
+            }
+
+            .card-deck {
+                margin-top: 50px;
+            }
+
+            table {
+                padding-block-start: 10px;
+            }
+
+            .my-custom-scrollbar {
+                position: relative;
+                height: 400px;
+                overflow: auto;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script src="scripts/browserMqtt.js"></script>
+        <script src="scripts/controller.js"></script>
+
+        <div class="container-fluid" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNjJRSGZVgDSFF0KyW6lDBH6Ebd0uHFkwxz6bNF1erWlQqQ4ZF);background-size: 40%">
+            <strong style="margin-left: 5%;font-family: Impact;font-size: 80px;color: rgb(62, 95, 241)">MQTT</strong>
+            <h1 style="margin-left: 5%">My MQTT Web App</h1>
+        </div>
+        <hr>
+        <hr>
+
+        <div class="container-fluid">
+            <div class="card-deck">
+
+
+                <div class="card" style="background-color: #aa38f7;border-radius: 3%">
+                    <div class="card-body text-center">
+                        <h2>IOT FAN SWITCH</h2>
+
+                        <h4 id="status">The device is currently turned off</h4>
+                        <button id="one" class="btn btn-outline-primary">1</button>
+                        <button id="two" class="btn btn-outline-primary">2</button>
+                        <button id="three" class="btn btn-outline-primary">3</button>
+                        <button id="off" class="btn btn-outline-danger">OFF</button>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <hr>
+        <hr>
+        <br><br>
+    </body>
+    <script src="scripts/browserMqtt.js"></script>
+    <script src="scripts/moment.js"></script>
+    <script>
+        var connect = "wss://test.mosquitto.org:8081/mqtt";
+        client = mqtt.connect(connect);
+
+        $(document).ready(function () {
+            $("#one").click(function (e) {
+                e.preventDefault();
+                var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+                var topic = 'iran/fan/status';
+                var payload = 'Turned On: ' + time
+                client.publish(topic, payload);
+                $("#status").html("The fan is currently turned at 1");
+            })
+            $("#two").click(function (e) {
+                e.preventDefault();
+                var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+                var topic = 'iran/fan/status';
+                var payload = 'Turned On: ' + time
+                client.publish(topic, payload);
+                $("#status").html("The fan is currently turned at 2");
+            })
+            $("#three").click(function (e) {
+                e.preventDefault();
+                var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+                var topic = 'iran/fan/status';
+                var payload = 'Turned On: ' + time
+                client.publish(topic, payload);
+                $("#status").html("The fan is currently turned at 3");
+            })
+            $("#off").click(function (e) {
+                e.preventDefault();
+                var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+                var topic = 'iran/fan/status';
+                var payload = 'Turned Off: ' + time
+                client.publish(topic, payload);
+                $("#status").html("The fan is currently turned off");
+            })
+        })
+    </script>
+
+
+    </html> -->
